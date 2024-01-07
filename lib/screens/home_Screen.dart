@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:onlinetourapp/model/place_model.dart';
+import 'package:onlinetourapp/screens/widgets/category_card.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -122,6 +124,39 @@ class _homeScreenState extends State<homeScreen> {
             
             ),
           ),
+           //Recommended
+          SizedBox(
+            height: 10,
+          ),
+          Text('Recommended',
+          //textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 23,
+            fontWeight: FontWeight.bold,
+          ),),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+              height: 300,
+              child:ListView.builder(
+                itemCount: places.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Row(
+                      children: [
+                        Recommended(placeInfo: places[index], 
+                        press: () {  },),
+                         
+                      ],
+                    ),
+                );
+              })
+              
+            ),
+          
         ],
           ),
 
@@ -131,51 +166,84 @@ class _homeScreenState extends State<homeScreen> {
   }
 }
 
-class CategoryCard extends StatelessWidget {
-  final String title,image;
+class Recommended extends StatelessWidget {
+  final PlaceInfo placeInfo;
   final VoidCallback press;
-  const CategoryCard({
-    super.key, required this.title, required this.image, required this.press,
-  });
+  const Recommended({
+    Key? key, required this.placeInfo, required this.press,
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: press,
-        child: Material(
-          elevation:8,
-          borderRadius: BorderRadius.circular(100),
-          child: Container(
-            height: 40,
-            width: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(100),
+    return Material(
+      elevation: 5,
+       borderRadius: BorderRadius.circular(20),
+      child: Container(
+        height: 250,
+        width: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+                    color: Colors.white
+                  ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 150,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          fit: BoxFit.cover ,
+                          image: NetworkImage(placeInfo.image))
+                ),
+            
+              ),
             ),
-            child: Padding(
-              padding:EdgeInsets.symmetric(
-                horizontal: 5,vertical: 8.0
+            SizedBox(
+              height: 8.0,
+      
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(placeInfo.name,
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+              fontWeight: FontWeight.bold
+            ),),
+            SizedBox(
+              height: 8.0,
+      
+            ),
+           Row(
+            children: [
+              SizedBox(
+                width: 10,
               ),
-              child: Row(children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage(image),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(title,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold
-                ),
+              Icon(Icons.location_on,
+              color: Colors.black,),
+              SizedBox(
+                width: 20,
               ),
+              Text(placeInfo.location,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w400
+              ),)
             ],
-          ),),
-          ),
+           ), 
+          ],
         ),
+      ), 
       ),
     );
   }
 }
+
