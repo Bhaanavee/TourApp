@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onlinetourapp/screens/home_Screen.dart';
 import 'package:onlinetourapp/screens/explore_Screen.dart';
 //import 'package:onlinetourapp/screens/profile_Screen.dart';
-import 'package:onlinetourapp/screens/wish_List.dart';
+//import 'package:onlinetourapp/screens/wish_List.dart';
 class profileScreen extends StatefulWidget {
   const profileScreen({super.key});
 
@@ -15,7 +15,7 @@ class _profileScreenState extends State<profileScreen> {
   List<Widget> screens=[
     homeScreen(),
     exploreScreen(),
-    wishList(),
+   // wishList(),
     //profileScreen()
     
   ];
@@ -32,7 +32,7 @@ class _profileScreenState extends State<profileScreen> {
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home),label:"HOME"),
             BottomNavigationBarItem(icon: Icon(Icons.travel_explore),label: "EXPLORE"),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite_outline_sharp),label: "WISHLIST"),      
+           // BottomNavigationBarItem(icon: Icon(Icons.favorite_outline_sharp),label: "WISHLIST"),      
            // BottomNavigationBarItem(icon: Icon(Icons.account_circle),label: "PROFILE"),
             
             ],
