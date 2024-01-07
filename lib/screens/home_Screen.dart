@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onlinetourapp/model/place_model.dart';
+import 'package:onlinetourapp/screens/detail_screen.dart';
+import 'package:onlinetourapp/screens/recommeded.dart';
 import 'package:onlinetourapp/screens/widgets/category_card.dart';
 
 class homeScreen extends StatefulWidget {
@@ -88,32 +90,32 @@ class _homeScreenState extends State<homeScreen> {
                        children: [
                 CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg",  //add an image asset of chennai
+                  image:"https://www.shutterstock.com/image-vector/chennai-city-water-color-panoramic-260nw-419140405.jpg",  //add an image asset of chennai
                   title: "Chennai",
                 ),
                    CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg", //add an image asset of bangalore
+                  image:"https://www.shutterstock.com/image-vector/vector-panoramic-water-color-illustration-260nw-383431900.jpg", //add an image asset of bangalore
                   title: "Bangalore",
                 ),
                    CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg", //add an image asset of mumbai
+                  image:"https://www.shutterstock.com/image-illustration/red-skyline-mumbai-formerly-called-260nw-1382984345.jpg", //add an image asset of mumbai
                   title: "Mumbai",
                 ),
                    CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg", //add an image asset of ahmedabad
+                  image:"https://www.shutterstock.com/image-vector/ahmedabad-city-water-color-panoramic-260nw-419140417.jpg", //add an image asset of ahmedabad
                   title: "Ahmedabad",
                 ),
                    CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg", //add an image asset of hyderabad
+                  image:"https://www.shutterstock.com/image-vector/abstract-hyderabad-skyline-color-landmarks-260nw-511968295.jpg", //add an image asset of hyderabad
                   title: "Hyderabad",
                 ),
                    CategoryCard(
                   press:(){},
-                  image:"onlinetourapp\images\Welcome.jpeg", //add an image asset of delhi
+                  image:"https://st4.depositphotos.com/1921043/39325/v/1600/depositphotos_393252400-stock-illustration-delhi-india-city-skyline-color.jpg", //add an image asset of delhi
                   title: "Delhi",
                 ),
               ],
@@ -148,7 +150,14 @@ class _homeScreenState extends State<homeScreen> {
                   child: Row(
                       children: [
                         Recommended(placeInfo: places[index], 
-                        press: () {  },),
+                        press: () { 
+                          Navigator.push(context, MaterialPageRoute(builder: 
+                          (context) => detailScreen(
+                            placeInfo: places[index],)
+                           
+                           )
+                           );
+                         },),
                          
                       ],
                     ),
@@ -163,87 +172,6 @@ class _homeScreenState extends State<homeScreen> {
         
       );
      
-  }
-}
-
-class Recommended extends StatelessWidget {
-  final PlaceInfo placeInfo;
-  final VoidCallback press;
-  const Recommended({
-    Key? key, required this.placeInfo, required this.press,
-  }): super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: 5,
-       borderRadius: BorderRadius.circular(20),
-      child: Container(
-        height: 250,
-        width: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-                    color: Colors.white
-                  ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 150,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          fit: BoxFit.cover ,
-                          image: NetworkImage(placeInfo.image))
-                ),
-            
-              ),
-            ),
-            SizedBox(
-              height: 8.0,
-      
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(placeInfo.name,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-            ),),
-            SizedBox(
-              height: 8.0,
-      
-            ),
-           Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Icon(Icons.location_on,
-              color: Colors.black,),
-              SizedBox(
-                width: 20,
-              ),
-              Text(placeInfo.location,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w400
-              ),)
-            ],
-           ), 
-          ],
-        ),
-      ), 
-      ),
-    );
   }
 }
 

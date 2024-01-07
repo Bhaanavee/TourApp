@@ -29,7 +29,7 @@ class CategoryCard extends StatelessWidget {
               ),
               child: Row(children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage(image),
+                  backgroundImage: NetworkImage(image), //if adding through asset-> AssetImage
                 ),
                 SizedBox(
                   width: 10,

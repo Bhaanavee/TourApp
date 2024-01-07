@@ -19,6 +19,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
             radius: 80,
             backgroundImage:
              NetworkImage('https://lh3.googleusercontent.com/-U7qcqFn85WA/XrY7RdJSm-I/AAAAAAAAAAM/0SKE7zxko1095cE0Qmsq-eQ8pzYtsn3-QCLcBGAsYHQ/s1600/1589000991676364-0.png'),
+             //add welcome page image
           ),
           SizedBox(
             height: 40,
